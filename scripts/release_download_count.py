@@ -29,6 +29,8 @@ def release_download_count(
         if len(response) > 0:
             for release in response:
                 release_name = release["name"]
+                if release_name.startswith("staging "):
+                    continue
                 for asset in release["assets"]:
                     asset_name = asset["name"]
                     asset_download_count = int(asset["download_count"])
